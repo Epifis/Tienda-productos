@@ -63,109 +63,154 @@ public class TiendaDeProductos {
         //Evaluación de expresiones relacionales
         
         /*
-        En el método main implemente la evaluación de las expresiones relacionales:
-            tipo== DROGUERIA
-            cantidadBodega > 0
-            totalProductosVendidos > 0
-            cantidadBodega <= cantidadMinima
+            Tipo == SUPERMERCADO && totalProductosVendidos == 0
+            ValorUnitario >= 10000 && valorUnitario <= 20000 && tipo == DROGUERIA
+            ValorUnitario >= 10000 || tipo==DROGUERIA && valorUnitario <= 20000 || tipo == SUPERMERCADO
+            ! ( tipo == PAPELERIA )
+            Tipo == SUPERMERCADO || tipo == DROGUERIA
         */
         
         System.out.println("Evaluación: ");
-        System.out.println(" Tipo == drogueria");
-        System.out.print("  Libreta ");
-        if(libreta.getTipo()== 2)
-            System.out.println("es de dorguería");
+        
+        System.out.println(" Tipo == SUPERMERCADO && totalProductosVendidos == 0");
+        
+        String a = " Es de supermercado y no se ha vendido nada";
+        String b = "No se cumplen ambas condiciones";
+        
+        System.out.print("  Libreta: ");
+        if(libreta.getTipo()== 3 && libreta.getCantVendida() == 0)
+            System.out.println(a);
         else
-            System.out.println("no es de tipo dorgería");
-        System.out.print("  Leche ");
-        if(leche.getTipo()== 2)
-            System.out.println("es de dorguería");
+            System.out.println(b);
+        System.out.print("  Leche: ");
+        if(leche.getTipo()== 3 && leche.getCantVendida() == 0)
+            System.out.println(a);
         else
-            System.out.println("no es de tipo dorgería");
-        System.out.print("  Libreta ");
-        if(leche.getTipo()== 2)
-            System.out.println("es de dorguería");
-        else
-            System.out.println("no es de tipo dorgería");
+            System.out.println(b);
         System.out.print("  Jabon ");
-        if(jabon.getTipo()== 2)
-            System.out.println("es de dorguería");
+        if(jabon.getTipo()== 3 && jabon.getCantVendida() == 0)
+            System.out.println(a);
         else
-            System.out.println("no es de tipo dorgería");
+            System.out.println(b);
         System.out.print("  Aspirina ");
-        if(aspirina.getTipo()== 2)
-            System.out.println("es de dorguería");
+        if(aspirina.getTipo()== 3 && aspirina.getCantVendida() == 0)
+            System.out.println(a);
         else
-            System.out.println("no es de tipo dorgería");
+            System.out.println(b);
         
-        //Cantidad bodega
-        System.out.println("CantidadBodega>0");
-        System.out.print("  Libreta: ");
-        if(libreta.getCantActual() > 0)
-            System.out.println("Hay productos en bodega");
-        else
-            System.out.println("No hay productos en bodega");
-        System.out.print("  Leche:  ");
-        if(leche.getCantActual() > 0)
-            System.out.println("Hay productos en bodega");
-        else
-            System.out.println("No hay productos en bodega");
-        System.out.print("  Jabon: ");
-        if(jabon.getCantActual() > 0)
-            System.out.println("Hay productos en bodega");
-        else
-            System.out.println("No hay productos en bodega");
-        System.out.print("  Aspirina: ");
-        if(aspirina.getCantActual() > 0)
-            System.out.println("Hay productos en bodega");
-        else
-            System.out.println("No hay productos en bodega");
+        //ValorUnitario >= 10000 && valorUnitario <= 20000 && tipo == DROGUERIA
         
-        //Productos vendidos > 0
-        System.out.println("totalProductosVendidos > 0");
-        System.out.print("  Libreta: ");
-        if(libreta.getCantVendida() > 0)
-            System.out.println("Se vendieron productos");
-        else
-            System.out.println("No se vendieron productos");
-        System.out.print("  Leche:  ");
-        if(leche.getCantVendida() > 0)
-            System.out.println("Se vendieron productos");
-        else
-            System.out.println("No se vendieron productos");
-        System.out.print("  Jabon: ");
-        if(jabon.getCantVendida() > 0)
-            System.out.println("Se vendieron productos");
-        else
-            System.out.println("No se vendieron productos");
-        System.out.print("  Aspirina: ");
-        if(aspirina.getCantVendida() > 0)
-            System.out.println("Se vendieron productos");
-        else
-            System.out.println("No se vendieron productos");
+        System.out.println(" ValorUnitario >= 10000 && valorUnitario <= 20000 && tipo == DROGUERIA");
         
-        //cantidadBodega <= cantidadMinima
-        System.out.println("cantidadBodega <= cantidadMinima");
+        a = " El valor por producto es mayor o igual que 10000 y menor o igual a 20000 y es de drogueria";
+        b = "No se cumplen algunas o niguna de las condiciones";
+        
         System.out.print("  Libreta: ");
-        if(libreta.getCantActual() <= libreta.getCantMinima())
-            System.out.println("Hay que comprar productos");
+        if(libreta.getPrecioBase()>= 10000 && libreta.getPrecioBase() <= 20000 && libreta.getTipo() == 0)
+            System.out.println(a);
         else
-            System.out.println("No hay que comprar productos");
-        System.out.print("  Leche:  ");
-        if(leche.getCantActual() <= leche.getCantMinima())
-            System.out.println("Hay que comprar productos");
+            System.out.println(b);
+        System.out.print("  Leche: ");
+        if(leche.getPrecioBase()>= 10000 && leche.getPrecioBase() <= 20000 && leche.getTipo() == 0)
+            System.out.println(a);
         else
-            System.out.println("No hay que comprar productos");
-        System.out.print("  Jabon: ");
-        if(jabon.getCantActual() <= jabon.getCantMinima())
-            System.out.println("Hay que comprar productos");
+            System.out.println(b);
+        System.out.print("  Jabon ");
+        if(jabon.getPrecioBase()>= 10000 && jabon.getPrecioBase() <= 20000 && jabon.getTipo() == 0)
+            System.out.println(a);
         else
-            System.out.println("No hay que comprar productos");
-        System.out.print("  Aspirina: ");
-        if(aspirina.getCantActual() <= aspirina.getCantMinima())
-            System.out.println("Hay que comprar productos");
+            System.out.println(b);
+        System.out.print("  Aspirina ");
+        if(aspirina.getPrecioBase()>= 10000 && libreta.getPrecioBase() <= 20000 && aspirina.getTipo() == 0)
+            System.out.println(a);
         else
-            System.out.println("No hay que comprar productos");
+            System.out.println(b);
+        
+       //ValorUnitario >= 10000 || tipo==DROGUERIA && valorUnitario <= 20000 || tipo == SUPERMERCADO
+       
+        System.out.println(" ValorUnitario >= 10000 || tipo==DROGUERIA && valorUnitario <= 20000 || tipo == SUPERMERCADO");
+        
+        a = " Se cumple o que el precio base sea mayor o igual a 10000, o que sea de tipo drogueria y que el precio base sea menor o igual que 20000, o que es de tipo supermercado";
+        b = "No se cumplen algunas o niguna de las condiciones";
+        
+        System.out.print("  Libreta: ");
+        if(libreta.getPrecioBase()>= 10000 || libreta.getTipo() == 2 && libreta.getPrecioBase() <= 20000 || libreta.getTipo() == 3)
+            System.out.println(a);
+        else
+            System.out.println(b);
+        System.out.print("  Leche: ");
+        if(leche.getPrecioBase()>= 10000 || leche.getTipo() == 2 && leche.getPrecioBase() <= 20000 || leche.getTipo() == 3)
+            System.out.println(a);
+        else
+            System.out.println(b);
+        System.out.print("  Jabon ");
+        if(jabon.getPrecioBase()>= 10000 || jabon.getTipo() == 2 && jabon.getPrecioBase() <= 20000 || jabon.getTipo() == 3)
+            System.out.println(a);
+        else
+            System.out.println(b);
+        System.out.print("  Aspirina ");
+        if(aspirina.getPrecioBase()>= 10000 || aspirina.getTipo() == 2 && aspirina.getPrecioBase() <= 20000 || aspirina.getTipo() == 3)
+            System.out.println(a);
+        else
+            System.out.println(b);
+        
+        //! ( tipo == PAPELERIA )
+                
+        System.out.println("! ( tipo == PAPELERIA )");
+        
+        a = " El producto no es de papeleria";
+        b = "El producto es de papeleria";
+        
+        System.out.print("  Libreta: ");
+        if(libreta.getTipo() != 1)
+            System.out.println(a);
+        else
+            System.out.println(b);
+        System.out.print("  Leche: ");
+        if(leche.getTipo() != 1)
+            System.out.println(a);
+        else
+            System.out.println(b);
+        System.out.print("  Jabon ");
+        if(jabon.getTipo() != 1)
+            System.out.println(a);
+        else
+            System.out.println(b);
+        System.out.print("  Aspirina ");
+        if(aspirina.getTipo() != 1)
+            System.out.println(a);
+        else
+            System.out.println(b);
+        
+        // Tipo == SUPERMERCADO || tipo == DROGUERIA
+        
+        System.out.println("Tipo == SUPERMERCADO || tipo == DROGUERIA");
+        
+        a = " El producto es de Supermercado o de droguería";
+        b = "El producto es de papeleria";
+        
+        System.out.print("  Libreta: ");
+        if(libreta.getTipo() != 1)
+            System.out.println(a);
+        else
+            System.out.println(b);
+        System.out.print("  Leche: ");
+        if(leche.getTipo() != 1)
+            System.out.println(a);
+        else
+            System.out.println(b);
+        System.out.print("  Jabon ");
+        if(jabon.getTipo() != 1)
+            System.out.println(a);
+        else
+            System.out.println(b);
+        System.out.print("  Aspirina ");
+        if(aspirina.getTipo() != 1)
+            System.out.println(a);
+        else
+            System.out.println(b);
+        
+        
     }
     
 }
