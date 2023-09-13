@@ -59,6 +59,9 @@ public class TiendaDeProductos {
         System.out.println("  Precio final: " + (jabon.iva * jabon.precioBase + jabon.precioBase));
         System.out.println("Aspirina: \n  Cantidad actual: " + aspirina.cantActual + "\n  Tope mínimo: " + aspirina.cantMinima + "\n  Cantidad vendida: " + aspirina.cantVendida + "\n  Precio base: " + aspirina.precioBase);
         System.out.println("  Precio final: " + (aspirina.iva * aspirina.precioBase + aspirina.precioBase));
+
+        //Evaluación de expresiones relacionales
+        
         
     }
     
