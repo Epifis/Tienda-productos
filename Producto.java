@@ -1,4 +1,4 @@
-package tienda.de.productos;
+package tiendaproductos;
 
 /**
  *
@@ -7,6 +7,7 @@ package tienda.de.productos;
 public class Producto {
     int cantActual, cantMinima, cantVendida, precioBase, tipo;
     double iva;
+    String nombreTipo;
     private final int papeleria = 1, drogueria = 2, supermercado = 3;
     private final double ivaPapeleria = 0.16, ivaDrogueria = 0.12, ivaSupermercado = 0.04;
     
@@ -97,4 +98,12 @@ public class Producto {
         this.iva = iva;
     }
     
+    public String ImprimeTipo(){
+        switch (this.tipo) {
+            case 1 -> nombreTipo = "Papelería";
+            case 2 -> nombreTipo = " Droguería";
+            case 3 -> nombreTipo = " Supermercado";
+        }
+        return nombreTipo;
+    }
 }
