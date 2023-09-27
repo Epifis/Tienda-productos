@@ -1,4 +1,4 @@
-ackage tienda.de.productos;
+package tienda.de.productos;
 
 import java.util.Scanner;
 
