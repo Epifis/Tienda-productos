@@ -1,16 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package tiendaproductos;
+ackage tienda.de.productos;
+
+import java.util.Scanner;
 
 /**
  *
- * @author sg702-12
+ * @author Alexandra Tinjacá
  */
 public class Tienda {
     String nombre, direccion;
     int cantVendidaProducto1, cantVendidaProducto2, cantVendidaProducto3, cantVendidaProducto4, cantMasVendida;
+    double precioProducto;
+    int cantidadBodega, cantidadMinima, cantidadComprar;
+    private final Scanner sc= new Scanner(System.in);
 
     public Tienda() {
     }
@@ -42,6 +43,22 @@ public class Tienda {
     public int getCantMasVendida() {
         return cantMasVendida;
     }
+
+    public double getPrecioProducto() {
+        return precioProducto;
+    }
+
+    public int getCantidadComprar() {
+        return cantidadComprar;
+    }
+
+    public int getCantidadBodega() {
+        return cantidadBodega;
+    }
+
+    public int getCantidadMinima() {
+        return cantidadMinima;
+    }
     
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -70,6 +87,22 @@ public class Tienda {
     public void setCantMasVendida(int cantMasVendida) {
         this.cantMasVendida = cantMasVendida;
     }
+
+    public void setPrecioProducto(double precioProducto) {
+        this.precioProducto = precioProducto;
+    }
+
+    public void setCantidadComprar(int cantidadComprar) {
+        this.cantidadComprar = cantidadComprar;
+    }
+
+    public void setCantidadBodega(int cantidadBodega) {
+        this.cantidadBodega = cantidadBodega;
+    }
+
+    public void setCantidadMinima(int cantidadMinima) {
+        this.cantidadMinima = cantidadMinima;
+    }
     
     public void crearProducto (){
     }
@@ -84,4 +117,31 @@ public class Tienda {
         else
             this.cantMasVendida = cantVendidaProducto3;
     }
+    public void HacerPedido(){
+        this.cantidadBodega = cantidadMinima;
+    }
+        public void AumentarValorUnitario(){
+        System.out.println("El precio base era de: " + precioProducto);
+        if(precioProducto < 1000)
+            this.precioProducto = (precioProducto * 0.01) + precioProducto;
+        else if (precioProducto >= 1000 && precioProducto <= 5000)
+            this.precioProducto = (precioProducto * 0.02) + precioProducto;
+        else if (cantidadComprar < 5000)
+            this.precioProducto = (precioProducto * 0.03) + precioProducto;
+        else
+            System.out.println("No se hizo ningun aumento");
+        System.out.println("El precio aumentado quedo en: " + precioProducto);
+    }
+    public void RealizarVenta(){
+        System.out.println("Ingrese la cantidad de unidades a comprar: ");
+        this.cantidadComprar = sc.nextInt();
+        if(cantidadComprar > 10 && cantidadComprar < 50)
+            this.precioProducto = cantidadComprar * precioProducto - (precioProducto * 0.10);
+        else if (cantidadComprar >= 51 && cantidadComprar < 100)
+            this.precioProducto = cantidadComprar * precioProducto - (precioProducto * 0.20);
+        else if (cantidadComprar >= 100)
+            this.precioProducto = (precioProducto * 0.10) + cantidadComprar * precioProducto;
+        this.cantidadBodega = cantidadBodega - cantidadComprar;
+    }
+    
 }
