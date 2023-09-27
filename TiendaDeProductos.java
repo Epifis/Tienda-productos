@@ -1,4 +1,7 @@
-package tiendaproductos;
+package tienda.de.productos;
+
+import java.util.Scanner;
+
 /**
  *
  * @author Alexandra Tinjaca
@@ -10,6 +13,8 @@ public class TiendaDeProductos {
      */
     public static void main(String[] args) {
         String nombreProductoMasVendido;
+        int numeroProducto, Seguir = 1;
+        Scanner sc= new Scanner(System.in);
         
         Tienda tienda1;
         tienda1= new Tienda();
@@ -86,5 +91,104 @@ public class TiendaDeProductos {
         System.out.println("Para Leche es tipo: " + leche.ImprimeTipo());
         System.out.println("Para Jabon es tipo: " + jabon.ImprimeTipo());
         System.out.println("Para Aspirina es tipo: " + aspirina.ImprimeTipo());
+
+            System.out.println("Revisemos si hay que ajustar la cantidad en bodega");
+            //Para hacer pedidos
+
+            if(libreta.getCantActual() < libreta.getCantMinima()){
+                tienda1.setCantidadMinima(libreta.getCantMinima());
+                tienda1.setCantidadBodega(libreta.getCantActual());
+                tienda1.HacerPedido();
+                libreta.setCantActual(tienda1.getCantidadBodega());
+                System.out.println("La cantidad en bodega de libretas ahora es: " + libreta.getCantActual());
+            }
+            if (leche.getCantActual() < leche.getCantMinima()){
+                tienda1.setCantidadMinima(leche.getCantMinima());
+                tienda1.setCantidadBodega(leche.getCantActual());
+                tienda1.HacerPedido();
+                leche.setCantActual(tienda1.getCantidadBodega());
+                System.out.println("La cantidad en bodega de leche ahora es: " + leche.getCantActual());
+            }
+            if (jabon.getCantActual() < jabon.getCantMinima()){
+                tienda1.setCantidadMinima(jabon.getCantMinima());
+                tienda1.setCantidadBodega(jabon.getCantActual());
+                tienda1.HacerPedido();
+                jabon.setCantActual(tienda1.getCantidadBodega());
+                System.out.println("La cantidad en bodega de jabon ahora es: " + jabon.getCantActual());
+            }
+            if (aspirina.getCantActual() < aspirina.getCantMinima()){
+                tienda1.setCantidadMinima(aspirina.getCantMinima());
+                tienda1.setCantidadBodega(aspirina.getCantActual());
+                tienda1.HacerPedido();
+                aspirina.setCantActual(tienda1.getCantidadBodega());
+                System.out.println("La cantidad en bodega de aspirina ahora es: " + aspirina.getCantActual());
+            }
+            else
+                System.out.println("Todo en bodega está por encima del mínimo :3");
+            
+        do{
+            //Para compra y aumento de valor unitario por producto elegido
+            System.out.println("Ingrese el número del producto a comprar: ");
+            System.out.println("1. Libreta \n 2. Leche \n 3. Jabón \n 4. Aspirina");
+            numeroProducto = sc.nextInt();
+
+            switch (numeroProducto) {
+                case 1 -> tienda1.setPrecioProducto(libreta.getPrecioBase());
+                case 2 -> tienda1.setPrecioProducto(leche.getPrecioBase());
+                case 3 -> tienda1.setPrecioProducto(jabon.getPrecioBase());
+                case 4 -> tienda1.setPrecioProducto(aspirina.getPrecioBase());
+                default -> System.out.println("Lo insertado no es válido.");
+            }
+
+            tienda1.AumentarValorUnitario();
+            tienda1.RealizarVenta();
+            System.out.println("El precio final es de: " + tienda1.getPrecioProducto());
+            
+            switch (numeroProducto) {
+                case 1 -> libreta.setCantActual(tienda1.getCantidadBodega());
+                case 2 -> leche.setCantActual(tienda1.getCantidadBodega());
+                case 3 -> jabon.setCantActual(tienda1.getCantidadBodega());
+                case 4 -> aspirina.setCantActual(tienda1.getCantidadBodega());
+            }
+
+            System.out.println("Ahora quedan " + tienda1.getCantidadBodega() + "en bodega.");
+            
+            do{
+                //Para hacer pedidos
+                if(libreta.getCantActual() < libreta.getCantMinima()){
+                    tienda1.setCantidadMinima(libreta.getCantMinima());
+                    tienda1.setCantidadBodega(libreta.getCantActual());
+                    tienda1.HacerPedido();
+                    libreta.setCantActual(tienda1.getCantidadBodega());
+                    System.out.println("La cantidad en bodega de libretas ahora es: " + libreta.getCantActual());
+                }
+                if (leche.getCantActual() < leche.getCantMinima()){
+                    tienda1.setCantidadMinima(leche.getCantMinima());
+                    tienda1.setCantidadBodega(leche.getCantActual());
+                    tienda1.HacerPedido();
+                    leche.setCantActual(tienda1.getCantidadBodega());
+                    System.out.println("La cantidad en bodega de leche ahora es: " + leche.getCantActual());
+                }
+                if (jabon.getCantActual() < jabon.getCantMinima()){
+                    tienda1.setCantidadMinima(jabon.getCantMinima());
+                    tienda1.setCantidadBodega(jabon.getCantActual());
+                    tienda1.HacerPedido();
+                    jabon.setCantActual(tienda1.getCantidadBodega());
+                    System.out.println("La cantidad en bodega de jabon ahora es: " + jabon.getCantActual());
+                }
+                if (aspirina.getCantActual() < aspirina.getCantMinima()){
+                    tienda1.setCantidadMinima(aspirina.getCantMinima());
+                    tienda1.setCantidadBodega(aspirina.getCantActual());
+                    tienda1.HacerPedido();
+                    aspirina.setCantActual(tienda1.getCantidadBodega());
+                    System.out.println("La cantidad en bodega de aspirina ahora es: " + aspirina.getCantActual());
+                }
+                else
+                    System.out.println("Todo en bodega está por encima del mínimo :3");
+            }while(libreta.getCantActual() < libreta.getCantMinima() || leche.getCantActual()< leche.getCantMinima() || jabon.getCantActual()< jabon.getCantMinima() || aspirina.getCantActual()< aspirina.getCantMinima());
+            
+            System.out.println("Quiere seguir comprando? Sí si escriba 1, sino escriba otro numero");
+            Seguir = sc.nextInt();
+        } while(Seguir==1);
     }
 }
